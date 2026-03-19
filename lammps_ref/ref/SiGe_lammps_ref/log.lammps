@@ -1,0 +1,8 @@
+LAMMPS (29 Aug 2024 - Development - 5b9cae1)
+  using 1 OpenMP thread(s) per MPI task
+# Lammps input to run Si4Ge4
+
+##########################
+#     Initialization     #
+##########################
+log Si4Ge4_3.log

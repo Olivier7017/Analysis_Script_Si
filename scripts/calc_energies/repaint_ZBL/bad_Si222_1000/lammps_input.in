@@ -1,0 +1,16 @@
+variable nstruct equal 256
+variable i loop ${nstruct}
+
+label loop_struct
+clear
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si222_${i}.in
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+run 0
+next i
+jump SELF loop_struct
