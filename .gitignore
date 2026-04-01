@@ -1,0 +1,7 @@
+scripts/output/
+scripts/figures/
+scripts/calc_energies/
+*.npy
+*.pdf
+*.png
+*.traj

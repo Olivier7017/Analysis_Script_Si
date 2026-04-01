@@ -15,8 +15,8 @@ linestyle_tuple = [
      ('dashdotdotted',         (0, (3, 5, 1, 5, 1, 5))),
      ('loosely dashdotdotted', (0, (3, 10, 1, 10, 1, 10))),
      ('densely dashdotdotted', (0, (3, 1, 1, 1, 1, 1)))]
-linestyle_dict = dict(linestyle_tuple)
+LINESTYLES_DICT = dict(linestyle_tuple)
 
 FOLDER_COLORS = {"ref": "k", "noZBL": "gold", "ZBL": "red"}
 LINESTYLES = ["-", "--", "-.", ":"]
-NSTEPS_LINESTYLES = {"250": linestyle_dict['loosely dotted'], "1000": linestyle_dict['loosely dashed']}
+NSTEPS_LINESTYLES = {"250": LINESTYLES_DICT['loosely dotted'], "1000": LINESTYLES_DICT['loosely dashed']}

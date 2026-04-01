@@ -15,7 +15,7 @@ from scipy.ndimage import gaussian_filter1d
 import rdf_calc
 import energydist_calc
 import energy_quantile
-from namespace import LINESTYLES
+from namespace import LINESTYLES, LINESTYLES_DICT
 from energydist_calc import _natoms
 
 
@@ -25,9 +25,9 @@ def notexist(path):
 
 def main():
     if True:
-        #recalc_e, recalc_rdf = False, False
-        recalc_e, recalc_rdf = True, True
-        plot_debug = False
+        recalc_e, recalc_rdf = False, False
+        recalc_e, recalc_rdf = True, False
+        plot_debug = True
         #plot_debug = False
         folders = ["/home/olivi/projects/02-Simodels-ZBL/samples/ref",
                    "/home/olivi/projects/02-Simodels-ZBL/samples/noZBL",
@@ -38,14 +38,31 @@ def main():
 
         make_classic_graph(nsteps, folders, plot_debug, recalc_e, recalc_rdf)
 
+    #if True:
     if False:
+        #special_datas = ["/home/olivi/projects/02-Simodels-ZBL/scripts/output/ref/Si333_edist.dat",
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowestforce_Si333_1000_edist.dat",  # 1
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowerforce_Si333_1000_edist.dat",  # 10
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowforce_Si333_1000_edist.dat", # 100
+        #                 #"/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/Si333_1000_edist.dat",  # 1000
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/highforce_Si333_1000_edist.dat",
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/Si333_1000_edist.dat"] #5000
+        #special_datas = ["/home/olivi/projects/02-Simodels-ZBL/scripts/output/ref/Si111_rdf.dat",
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/Si111_1000_rdf.dat",
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/epoch60_Si111_1000_rdf.dat"]
         special_datas = ["/home/olivi/projects/02-Simodels-ZBL/scripts/output/ref/Si111_edist.dat",
-                         "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/checkpointcommitcorrector2_Si111_1000_edist.dat",
-                         "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/checkpointcommitcorrector20_Si111_1000_edist.dat",
-                         "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/checkpointcommitcorrector100_Si111_1000_edist.dat"]
-        special_legends = ["ref", "2 corrector step", "20 corrector step", "100 corrector step"]
-        special_title = "Number of corrector step effect"
-        special_figname = "ncorrector_step.pdf"
+                         "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/Si111_1000_edist.dat",
+                         "/home/olivi/projects/02-Simodels-ZBL/scripts/output/noZBL/epoch60_Si111_1000_edist.dat"]
+        #special_datas = ["/home/olivi/projects/02-Simodels-ZBL/scripts/output/ref/Si333_rdf.dat",
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowestforce_Si333_1000_rdf.dat",  # 1
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowerforce_Si333_1000_rdf.dat", # 10
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/lowforce_Si333_1000_rdf.dat", # 100
+        #                 #"/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/Si333_1000_rdf.dat",  # 500
+        #                 "/home/olivi/projects/02-Simodels-ZBL/scripts/output/ZBL/highforce_Si333_1000_rdf.dat"] #5000
+        special_legends = ["ref", "lowest_ZBL", "lower_ZBL", "low_ZBL", "high_ZBL", "no_ZBL"]
+        special_legends = ["ref", "Old_potential", "Retrained"] 
+        special_title = "epoch60_potential.pdf"
+        special_figname = "epoch60_potential.pdf"
         make_special_graph(special_datas, special_legends, special_title, special_figname)
 
 
@@ -220,10 +237,11 @@ def _special_rdf(data, labels, title, figname, smooth_sigma):
         d = np.loadtxt(path)
         r = d[:, 0]
         color = f"C{i}"
-        ls = LINESTYLES[i % len(LINESTYLES)]
+        #ls = LINESTYLES[i % len(LINESTYLES)]
+        linestyles = ["-"] + [LINESTYLES_DICT['dashed'] for i in range(len(labels)-1)]
         for j, pair_name in enumerate(pair_names):
             g = gaussian_filter1d(d[:, j + 1], sigma=smooth_sigma) if smooth_sigma else d[:, j + 1]
-            axes[0, j].plot(r, g, color=color, linestyle=ls, label=labels[i])
+            axes[0, j].plot(r, g, color=color, linestyle=linestyles[i], label=labels[i])
             axes[0, j].set_title(pair_name, fontsize=14)
             axes[0, j].set_xlabel("r (Å)", fontsize=13)
             axes[0, j].set_ylabel("g(r)", fontsize=13)
@@ -245,11 +263,14 @@ def _special_edist(data, labels, title, figname):
     m = re.search(r'(SiGe|Si|Ge)(111|222|333)', stem0)
     n_atoms = _natoms(m.group(0)) if m else 1
 
-    # Compute plot range from all data
-    all_e = np.concatenate([np.loadtxt(p) / n_atoms for p in data])
-    all_e = all_e[np.isfinite(all_e)]
-    lo, hi = all_e.min(), all_e.max()
-    nbins = max(10, int(len(all_e) / len(data) / 5))
+    # Compute plot range from ref (first file) only
+    ref_e = np.loadtxt(data[0]) / n_atoms
+    ref_e = ref_e[np.isfinite(ref_e)]
+    mean_r = ref_e.mean()
+    half_width = max(ref_e.max() - mean_r, mean_r - ref_e.min())
+    lo = mean_r - 1.5 * half_width
+    hi = mean_r + 1.5 * half_width
+    nbins = max(10, int(len(ref_e) / 5))
 
     fig, ax = plt.subplots(figsize=(7, 5))
     for i, path in enumerate(data):
@@ -277,21 +298,25 @@ def _special_equantile(data, labels, title, figname):
     m = re.search(r'(SiGe|Si|Ge)(111|222|333)', stem0)
     n_atoms = _natoms(m.group(0)) if m else 1
 
-    all_e = np.concatenate([np.loadtxt(p) / n_atoms for p in data])
-    all_e = all_e[np.isfinite(all_e)]
-    lo, hi = all_e.min(), all_e.max()
+    ref_e = np.loadtxt(data[0]) / n_atoms
+    ref_e = ref_e[np.isfinite(ref_e)]
+    ref_mean = np.mean(ref_e)
+    half_width = max(ref_e.max() - ref_mean, ref_mean - ref_e.min())
+    lo = -5 * half_width
+    hi = 5 * half_width
+    linestyles = ["-"] + [LINESTYLES_DICT['dashed'] for i in range(len(labels)-1)]
 
     fig, ax = plt.subplots(figsize=(7, 5))
     for i, path in enumerate(data):
         energies = np.loadtxt(path) / n_atoms
         energies = energies[np.isfinite(energies)]
-        sorted_e = np.sort(energies)
+        sorted_e = np.sort(energies) - ref_mean
         percentiles = np.linspace(0, 100, len(sorted_e))
         ax.plot(percentiles, sorted_e, color=f"C{i}",
-                linestyle=LINESTYLES[i % len(LINESTYLES)], label=labels[i])
+                linestyle=linestyles[i], label=labels[i])
     ax.set_ylim(lo, hi)
     ax.set_xlabel("Percentile", fontsize=13)
-    ax.set_ylabel("Energy per atom (eV/atom)", fontsize=13)
+    ax.set_ylabel("Energy per atom relative to ref mean (eV/atom)", fontsize=13)
     ax.legend(fontsize=11)
     fig.suptitle(title or "Energy quantile", fontsize=15)
     fig.tight_layout()
