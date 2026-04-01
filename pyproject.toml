@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atoms-analysis-script"
+version = "0.1"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "ase",
+    "ovito",
+]
+
+[project.scripts]
+atoms-analysis = "atoms_analysis.analysis:main"
+
+[tool.setuptools]
+packages = ["atoms_analysis"]
+
+[tool.setuptools.package-dir]
+"atoms_analysis" = "scripts"

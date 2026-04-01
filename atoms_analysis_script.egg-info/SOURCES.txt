@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+atoms_analysis_script.egg-info/PKG-INFO
+atoms_analysis_script.egg-info/SOURCES.txt
+atoms_analysis_script.egg-info/dependency_links.txt
+atoms_analysis_script.egg-info/entry_points.txt
+atoms_analysis_script.egg-info/requires.txt
+atoms_analysis_script.egg-info/top_level.txt
+scripts/__init__.py
+scripts/analysis.py
+scripts/energy_quantile.py
+scripts/energydist_calc.py
+scripts/namespace.py
+scripts/prepare_lammps.py
+scripts/rdf_calc.py

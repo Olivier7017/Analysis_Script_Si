@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 
 from ase import Atoms
 from ase.io.lammpsdata import write_lammps_data
-from namespace import FOLDER_COLORS, LINESTYLES, NSTEPS_LINESTYLES
 
 def edist(atoms, name, category=None, folder_label=None, recalc=False):
     energies = evaluate_energies(atoms, category=category, folder_label=folder_label)
@@ -23,131 +22,40 @@ def edist(atoms, name, category=None, folder_label=None, recalc=False):
     return True
 
 
-def plot_edist(folder_data, nsteps=None, plot_debug=False, energy_spread=1.5):
-    """
-    folder_data: list of (folder_label, category_names)
-    nsteps: list of int, e.g. [250, 1000], to restrict which nsteps are plotted (None = all)
+def plot_edist(dat_files, out_file, labels=None, colors=None, linestyles=None, n_atoms=1, energy_spread=1.5, title=None):
+    """Plot energy distribution histograms from dat_files, save to out_file.
+    First file sets the x range."""
+    if not dat_files:
+        return
+    if labels is None:
+        labels = [os.path.splitext(os.path.basename(f))[0] for f in dat_files]
 
-    One figure per {elems}{supercell}, with a single histogram subplot.
-    Each histogram corresponds to a (folder_label, nsteps) combination.
-    nbins = int(nstruct / 5) where nstruct is the number of energies in the file.
-    Figures saved to figures/{elems}{supercell}_edist.pdf.
-    """
-    allowed = {str(n) for n in nsteps} if nsteps is not None else None
-    entries = []
-    for folder_label, category_names in folder_data:
-        for name in category_names:
-            m = re.match(r'^([A-Za-z]+\d+)(?:_(\d+))?$', name)
-            if m:
-                elems_supercell = m.group(1)
-                nsteps_str = m.group(2)
-                if allowed is not None and nsteps_str is not None and nsteps_str not in allowed:
-                    continue
-                display_label = f"{folder_label}_{nsteps_str}" if nsteps_str else folder_label
-                entries.append((folder_label, elems_supercell, f"output/{folder_label}/{name}_edist.dat", display_label))
+    ref_e = np.loadtxt(dat_files[0]) / n_atoms
+    ref_e = ref_e[np.isfinite(ref_e)]
+    mean_r = ref_e.mean()
+    lo = mean_r - energy_spread * (mean_r - ref_e.min())
+    hi = mean_r + energy_spread * (ref_e.max() - mean_r)
+    nbins = max(10, int(len(ref_e) / 5))
 
-    groups = defaultdict(list)
-    for entry in entries:
-        groups[entry[1]].append(entry)
-
-    for elems_supercell, group_entries in sorted(groups.items()):
-        fig, ax = plt.subplots(figsize=(7, 5))
-
-        sorted_entries = sorted(group_entries, key=lambda e: 0 if e[0] == "ref" else 1)
-        n_atoms = _natoms(elems_supercell)
-
-        # Determine plot range from ref (±50% of ref half-width around its mean)
-        ref_entry = next((e for e in sorted_entries if e[0] == "ref"), None)
-        spread = energy_spread.get(elems_supercell, 1.5) if isinstance(energy_spread, dict) else energy_spread
-        if ref_entry is not None:
-            ref_e = np.loadtxt(ref_entry[2]) / n_atoms
-            mean_r = ref_e.mean()
-            lo = mean_r - spread * (mean_r - ref_e.min())
-            hi = mean_r + spread * (ref_e.max() - mean_r)
-            nbins = int(len(ref_e) / 5)
-        else:
-            all_e = np.concatenate([np.loadtxt(e[2]) for e in sorted_entries]) / n_atoms
-            lo, hi = all_e.min(), all_e.max()
-            nbins = int(len(all_e) / 5)
-
-        for folder_label, _, dat_file, display_label in sorted_entries:
-            energies = np.loadtxt(dat_file) / n_atoms
-            nsteps = re.search(r'_(\d+)$', display_label)
-            nsteps = nsteps.group(1) if nsteps else None
-            color = FOLDER_COLORS.get(folder_label, "gray")
-            ls = NSTEPS_LINESTYLES.get(nsteps, "-") if nsteps else "-"
-            weights = np.ones(len(energies)) / len(energies) * 100
-            ax.hist(energies, bins=nbins, range=(lo, hi), weights=weights,
-                    histtype='stepfilled', alpha=0.4, color=color, linestyle=ls, label=display_label)
-        ax.set_xlim(lo, hi)
-
-        ax.set_xlabel("Energy per atom (eV/atom)", fontsize=13)
-        ax.set_ylabel("Percentage of configurations (%)", fontsize=13)
-        ax.legend(fontsize=11)
-        fig.suptitle(f"Energy distribution — {elems_supercell}", fontsize=15)
-        fig.tight_layout()
-        fig.savefig(f"figures/{elems_supercell}_edist.pdf")
-        plt.close(fig)
-
-    if plot_debug:
-        os.makedirs("figures/debug", exist_ok=True)
-
-        ref_lookup = {elems_supercell: dat_file
-                      for folder_label, elems_supercell, dat_file, _ in entries
-                      if folder_label == "ref"}
-
-        for folder_label, category_names in folder_data:
-            for name in category_names:
-                m = re.match(r'^([A-Za-z0-9]+)_([A-Za-z]+\d+)(?:_(\d+))?$', name)
-                #m = re.match(r'^([A-Za-z]+\d*)_([A-Za-z]+\d+)(?:_(\d+))?$', name)
-                if not m:
-                    continue
-                prefix, elems_supercell, nsteps_str = m.group(1), m.group(2), m.group(3)
-                if allowed is not None and nsteps_str is not None and nsteps_str not in allowed:
-                    continue
-                dat_file = f"output/{folder_label}/{name}_edist.dat"
-                variant_label = f"{prefix}_{folder_label}_{nsteps_str}" if nsteps_str else f"{prefix}_{folder_label}"
-
-                fig, ax = plt.subplots(figsize=(7, 5))
-                n_atoms = _natoms(elems_supercell)
-
-                ref_file = ref_lookup.get(elems_supercell)
-                ref_e = np.loadtxt(ref_file) / n_atoms if ref_file and os.path.exists(ref_file) else None
-
-                spread = energy_spread.get(elems_supercell, 1.5) if isinstance(energy_spread, dict) else energy_spread
-                if ref_e is not None:
-                    mean_r = ref_e.mean()
-                    lo = mean_r - spread * (mean_r - ref_e.min())
-                    hi = mean_r + spread * (ref_e.max() - mean_r)
-                    nbins = int(len(ref_e) / 5)
-                else:
-                    finite_e = np.loadtxt(dat_file) / n_atoms
-                    finite_e = finite_e[np.isfinite(finite_e)]
-                    lo, hi = finite_e.min(), finite_e.max()
-                    nbins = int(len(finite_e) / 5)
-
-                if ref_e is not None:
-                    weights_ref = np.ones(len(ref_e)) / len(ref_e) * 100
-                    ax.hist(ref_e, bins=nbins, range=(lo, hi), weights=weights_ref,
-                            histtype='stepfilled', alpha=0.4, color=FOLDER_COLORS["ref"], linestyle="-", label="ref")
-
-                energies = np.loadtxt(dat_file) / n_atoms
-                energies = energies[np.isfinite(energies)]
-                color = FOLDER_COLORS.get(folder_label, "gray")
-                ls = NSTEPS_LINESTYLES.get(nsteps_str, "-") if nsteps_str else "-"
-                weights = np.ones(len(energies)) / len(energies) * 100
-                ax.hist(energies, bins=nbins, range=(lo, hi), weights=weights,
-                        histtype='stepfilled', alpha=0.4, color=color, linestyle=ls, label=variant_label)
-
-                ax.set_xlim(lo, hi)
-                ax.set_xlabel("Energy per atom (eV/atom)", fontsize=13)
-                ax.set_ylabel("Percentage of configurations (%)", fontsize=13)
-                ax.legend(fontsize=11)
-                fig_stem = f"{prefix}_{elems_supercell}_{nsteps_str}" if nsteps_str else f"{prefix}_{elems_supercell}"
-                fig.suptitle(f"Energy distribution — {fig_stem} (debug)", fontsize=15)
-                fig.tight_layout()
-                fig.savefig(f"figures/debug/{fig_stem}_edist.pdf")
-                plt.close(fig)
+    fig, ax = plt.subplots(figsize=(7, 5))
+    for i, (path, label) in enumerate(zip(dat_files, labels)):
+        energies = np.loadtxt(path) / n_atoms
+        energies = energies[np.isfinite(energies)]
+        color = colors[i] if colors else f"C{i}"
+        ls = linestyles[i] if linestyles else "-"
+        weights = np.ones(len(energies)) / len(energies) * 100
+        ax.hist(energies, bins=nbins, range=(lo, hi), weights=weights,
+                histtype='stepfilled', alpha=0.4, color=color, linestyle=ls, label=label)
+    ax.set_xlim(lo, hi)
+    ax.set_xlabel("Energy per atom (eV/atom)", fontsize=13)
+    ax.set_ylabel("Percentage of configurations (%)", fontsize=13)
+    ax.legend(fontsize=11)
+    fig.suptitle(title or "Energy distribution", fontsize=15)
+    fig.tight_layout()
+    os.makedirs(os.path.dirname(os.path.abspath(out_file)), exist_ok=True)
+    fig.savefig(out_file)
+    plt.close(fig)
+    print(f"Saved {out_file}")
 
 
 ELEMENT_MASSES = {"Si": 28.085, "Ge": 72.630}

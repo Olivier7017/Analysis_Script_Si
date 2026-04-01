@@ -12,11 +12,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.ndimage import gaussian_filter1d
 
-import rdf_calc
-import energydist_calc
-import energy_quantile
-from namespace import LINESTYLES, LINESTYLES_DICT
-from energydist_calc import _natoms
+from . import rdf_calc
+from . import energydist_calc
+from . import energy_quantile
+from .namespace import LINESTYLES, LINESTYLES_DICT, FOLDER_COLORS, NSTEPS_LINESTYLES
+from .energydist_calc import _natoms
 
 
 def notexist(path):
@@ -70,23 +70,22 @@ def make_classic_graph(nsteps, folders, plot_debug, recalc_e, recalc_rdf):
     setup_lammps = False   # set True to write LAMMPS input files for missing energy logs
     n_bins = 500
     rcut = 10
+    energy_spread = {"Si333": 5}
     os.makedirs("figures", exist_ok=True)
 
+    allowed = {str(n) for n in nsteps} if nsteps is not None else None
     any_e_pending = False
     folder_data = []
+
     for folder in folders:
         folder_label = os.path.basename(folder)
         os.makedirs(f"output/{folder_label}", exist_ok=True)
         atoms_list, category_names = parse_traj(folder, keep_nsteps=(folder_label != "ref"))
         folder_data.append((folder_label, category_names))
 
-        # RDF
-        if recalc_rdf or any([notexist(f"output/{folder_label}/{name}_rdf.dat") for name in category_names]):
-            print("Calculating RDF")
-            for atoms, name in zip(atoms_list, category_names):
-                calc_rdf(atoms, name, folder_label=folder_label, recalc=recalc_rdf, n_bins=n_bins, rcut=rcut)
+        for atoms, name in zip(atoms_list, category_names):
+            calc_rdf(atoms, f"output/{folder_label}/{name}_rdf.dat", recalc=recalc_rdf, n_bins=n_bins, rcut=rcut)
 
-        # Energy distribution — level 1: ensure lammps energy evaluation
         for atoms, name in zip(atoms_list, category_names):
             if energydist_calc.energy_ready(name, folder_label):
                 continue
@@ -96,21 +95,106 @@ def make_classic_graph(nsteps, folders, plot_debug, recalc_e, recalc_rdf):
                 print(f"Energy log missing for {folder_label}/{name} (set setup_lammps=True to prepare)")
             any_e_pending = True
 
-        # Energy distribution — level 2: read energies and write edist.dat
         if not any_e_pending:
             for atoms, name in zip(atoms_list, category_names):
-                if recalc_e or notexist(f"output/{folder_label}/{name}_edist.dat"):
-                    calc_edist(atoms, name, folder_label=folder_label, recalc=recalc_e)
+                calc_edist(atoms, f"output/{folder_label}/{name}_edist.dat",
+                           category=name, folder_label=folder_label, recalc=recalc_e)
 
-    rdf_calc.plot_rdf(folder_data, nsteps=nsteps, plot_debug=plot_debug)
-    if not any_e_pending:
-        energy_spread = {"Si333": 5}
-        energydist_calc.plot_edist(folder_data, nsteps=nsteps, plot_debug=plot_debug, energy_spread=energy_spread)
-        energy_quantile.plot_energy_quantile(folder_data, nsteps=nsteps, plot_debug=plot_debug, energy_spread=energy_spread)
+    # Build entries grouped by elems_supercell for main plots
+    entries = []
+    for folder_label, category_names in folder_data:
+        for name in category_names:
+            m = re.match(r'^([A-Za-z]+\d+)(?:_(\d+))?$', name)
+            if not m:
+                continue
+            elems_supercell, nsteps_str = m.group(1), m.group(2)
+            if allowed is not None and nsteps_str is not None and nsteps_str not in allowed:
+                continue
+            display_label = f"{folder_label}_{nsteps_str}" if nsteps_str else folder_label
+            color = FOLDER_COLORS.get(folder_label, "gray")
+            ls = NSTEPS_LINESTYLES.get(nsteps_str, "-") if nsteps_str else "-"
+            entries.append((folder_label, elems_supercell,
+                            f"output/{folder_label}/{name}_rdf.dat",
+                            f"output/{folder_label}/{name}_edist.dat",
+                            display_label, color, ls))
+
+    groups = defaultdict(list)
+    for e in entries:
+        groups[e[1]].append(e)
+
+    for elems_supercell, group_entries in sorted(groups.items()):
+        sorted_entries = sorted(group_entries, key=lambda e: 0 if e[0] == "ref" else 1)
+        rdf_files   = [e[2] for e in sorted_entries]
+        edist_files = [e[3] for e in sorted_entries]
+        labels      = [e[4] for e in sorted_entries]
+        colors      = [e[5] for e in sorted_entries]
+        linestyles  = [e[6] for e in sorted_entries]
+        n_atoms = _natoms(elems_supercell)
+        spread = energy_spread.get(elems_supercell, 1.5) if isinstance(energy_spread, dict) else energy_spread
+
+        rdf_calc.plot_rdf(rdf_files, f"figures/{elems_supercell}_rdf.pdf",
+                          labels=labels, colors=colors, linestyles=linestyles,
+                          title=f"Partial RDF — {elems_supercell}")
+        if not any_e_pending:
+            energydist_calc.plot_edist(edist_files, f"figures/{elems_supercell}_edist.pdf",
+                                       labels=labels, colors=colors, linestyles=linestyles,
+                                       n_atoms=n_atoms, energy_spread=spread,
+                                       title=f"Energy distribution — {elems_supercell}")
+            energy_quantile.plot_equantile(edist_files, f"figures/{elems_supercell}_equantile.pdf",
+                                           labels=labels, colors=colors, linestyles=linestyles,
+                                           n_atoms=n_atoms, energy_spread=spread,
+                                           title=f"Energy quantile — {elems_supercell}")
+
+    if plot_debug:
+        os.makedirs("figures/debug", exist_ok=True)
+        ref_rdf   = {es: rdf   for fl, es, rdf,   _,     _, _, _ in entries if fl == "ref"}
+        ref_edist = {es: edist for fl, es, _,   edist,   _, _, _ in entries if fl == "ref"}
+
+        for folder_label, category_names in folder_data:
+            for name in category_names:
+                m = re.match(r'^([A-Za-z0-9]+)_([A-Za-z]+\d+)(?:_(\d+))?$', name)
+                if not m:
+                    continue
+                prefix, elems_supercell, nsteps_str = m.group(1), m.group(2), m.group(3)
+                if allowed is not None and nsteps_str is not None and nsteps_str not in allowed:
+                    continue
+                fig_stem = f"{prefix}_{elems_supercell}_{nsteps_str}" if nsteps_str else f"{prefix}_{elems_supercell}"
+                color = FOLDER_COLORS.get(folder_label, "gray")
+                ls = NSTEPS_LINESTYLES.get(nsteps_str, "-") if nsteps_str else "-"
+                variant_label = f"{prefix}_{folder_label}_{nsteps_str}" if nsteps_str else f"{prefix}_{folder_label}"
+                n_atoms = _natoms(elems_supercell)
+                spread = energy_spread.get(elems_supercell, 1.5) if isinstance(energy_spread, dict) else energy_spread
+
+                rdf_ref = ref_rdf.get(elems_supercell)
+                d_rdf = ([rdf_ref, f"output/{folder_label}/{name}_rdf.dat"] if rdf_ref and os.path.exists(rdf_ref)
+                         else [f"output/{folder_label}/{name}_rdf.dat"])
+                d_rdf_labels = (["ref", variant_label] if len(d_rdf) == 2 else [variant_label])
+                d_rdf_colors = ([FOLDER_COLORS["ref"], color] if len(d_rdf) == 2 else [color])
+                d_rdf_ls     = (["-", ls] if len(d_rdf) == 2 else [ls])
+                rdf_calc.plot_rdf(d_rdf, f"figures/debug/{fig_stem}_rdf.pdf",
+                                  labels=d_rdf_labels, colors=d_rdf_colors, linestyles=d_rdf_ls,
+                                  title=f"Partial RDF — {fig_stem} (debug)")
+
+                if not any_e_pending:
+                    edist_ref = ref_edist.get(elems_supercell)
+                    d_edist = ([edist_ref, f"output/{folder_label}/{name}_edist.dat"] if edist_ref and os.path.exists(edist_ref)
+                               else [f"output/{folder_label}/{name}_edist.dat"])
+                    d_edist_labels = (["ref", variant_label] if len(d_edist) == 2 else [variant_label])
+                    d_edist_colors = ([FOLDER_COLORS["ref"], color] if len(d_edist) == 2 else [color])
+                    d_edist_ls     = (["-", ls] if len(d_edist) == 2 else [ls])
+                    energydist_calc.plot_edist(d_edist, f"figures/debug/{fig_stem}_edist.pdf",
+                                               labels=d_edist_labels, colors=d_edist_colors, linestyles=d_edist_ls,
+                                               n_atoms=n_atoms, energy_spread=spread,
+                                               title=f"Energy distribution — {fig_stem} (debug)")
+                    energy_quantile.plot_equantile(d_edist, f"figures/debug/{fig_stem}_equantile.pdf",
+                                                   labels=d_edist_labels, colors=d_edist_colors, linestyles=d_edist_ls,
+                                                   n_atoms=n_atoms, energy_spread=spread,
+                                                   title=f"Energy quantile — {fig_stem} (debug)")
 
 
-def calc_rdf(atoms, name, folder_label=None, recalc=False, n_bins=500, rcut=10):
-    out_file = f"output/{folder_label}/{name}_rdf.dat" if folder_label else f"output/{name}_rdf.dat"
+def calc_rdf(atoms, out_file, recalc=False, n_bins=500, rcut=10):
+    if isinstance(atoms[0], list):
+        atoms = [a for sublist in atoms for a in sublist]
     if not recalc and os.path.exists(out_file):
         return
     with tempfile.NamedTemporaryFile(suffix=".traj", delete=False) as f:
@@ -122,11 +206,12 @@ def calc_rdf(atoms, name, folder_label=None, recalc=False, n_bins=500, rcut=10):
         os.unlink(tmp_path)
 
 
-def calc_edist(atoms, name, folder_label=None, recalc=False):
-    out_file = f"output/{folder_label}/{name}_edist.dat" if folder_label else f"output/{name}_edist.dat"
+def calc_edist(atoms, out_file, category=None, folder_label=None, recalc=False):
+    if isinstance(atoms[0], list):
+        atoms = [a for sublist in atoms for a in sublist]
     if not recalc and os.path.exists(out_file):
         return
-    energydist_calc.edist(atoms, out_file, category=name, folder_label=folder_label)
+    energydist_calc.edist(atoms, out_file, category=category, folder_label=folder_label)
 
 
 _NATOMS_TO_SUPERCELL = {8: "111", 64: "222", 216: "333"}

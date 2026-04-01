@@ -5,3 +5,4 @@ scripts/calc_energies/
 *.pdf
 *.png
 *.traj
+__pycache__

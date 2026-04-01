@@ -1,0 +1,2 @@
+[console_scripts]
+atoms-analysis = atoms_analysis.analysis:main
