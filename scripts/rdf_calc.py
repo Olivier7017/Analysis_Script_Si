@@ -14,6 +14,7 @@ def partial_rdf(traj_files, n_bins, rcut, out_file):
     all_frames = []
     header = None
     for traj_fn in traj_files:
+        print(f"Processing {traj_fn}")
         pipeline = import_file(traj_fn)
         mod = CoordinationAnalysisModifier(cutoff=rcut, number_of_bins=n_bins, partial=True)
         pipeline.modifiers.append(mod)

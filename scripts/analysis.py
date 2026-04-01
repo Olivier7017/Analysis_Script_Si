@@ -192,11 +192,16 @@ def make_classic_graph(nsteps, folders, plot_debug, recalc_e, recalc_rdf):
                                                    title=f"Energy quantile — {fig_stem} (debug)")
 
 
-def calc_rdf(atoms, out_file, recalc=False, n_bins=500, rcut=10):
-    if isinstance(atoms[0], list):
-        atoms = [a for sublist in atoms for a in sublist]
+def calc_rdf(atoms_or_files, out_file, recalc=False, n_bins=500, rcut=10):
     if not recalc and os.path.exists(out_file):
         return
+    # Accept file paths directly — avoids loading all frames into memory
+    if isinstance(atoms_or_files[0], (str, os.PathLike)):
+        rdf_calc.partial_rdf(list(atoms_or_files), n_bins, rcut, out_file)
+        return
+    atoms = atoms_or_files
+    if isinstance(atoms[0], list):
+        atoms = [a for sublist in atoms for a in sublist]
     with tempfile.NamedTemporaryFile(suffix=".traj", delete=False) as f:
         tmp_path = f.name
     try:
@@ -206,11 +211,23 @@ def calc_rdf(atoms, out_file, recalc=False, n_bins=500, rcut=10):
         os.unlink(tmp_path)
 
 
-def calc_edist(atoms, out_file, category=None, folder_label=None, recalc=False):
-    if isinstance(atoms[0], list):
-        atoms = [a for sublist in atoms for a in sublist]
+def calc_edist(atoms_or_files, out_file, category=None, folder_label=None, recalc=False):
     if not recalc and os.path.exists(out_file):
         return
+    # Accept file paths directly — reads one file at a time to avoid memory spike
+    if isinstance(atoms_or_files[0], (str, os.PathLike)):
+        energies = []
+        for f in atoms_or_files:
+            print(f"Processing {f}")
+            atoms = read(f, index=":")
+            e = energydist_calc.evaluate_energies(atoms, category=category, folder_label=folder_label)
+            if e is not None:
+                energies.extend(e)
+        np.savetxt(out_file, np.array(energies))
+        return
+    atoms = atoms_or_files
+    if isinstance(atoms[0], list):
+        atoms = [a for sublist in atoms for a in sublist]
     energydist_calc.edist(atoms, out_file, category=category, folder_label=folder_label)
 
 
