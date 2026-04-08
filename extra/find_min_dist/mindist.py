@@ -3,24 +3,13 @@ from ase.geometry import get_distances
 import numpy as np
 
 filenames = [
-    "ZBL/fast_noT_Si333_1000",
-    "ZBL/fastrcut_Si333_1000",
-    "ZBL/lowestforce_Si333_1000",
-    "ZBL/lowerforce_Si333_1000",
     "ZBL/lowforce_Si333_1000",
-    "ZBL/highforce_Si333_1000",
+    "ZBL/new_Si333_5000",
     "noZBL/Si333_1000",
 ]
 
-filenames = [
-    "ZBL/fast_noT_Si333_1000",
-    "ZBL/fast50_noT_Si333_1000",
-    "ZBL/fast100_noT_Si333_1000",
-    "ZBL/fastrcut_Si333_1000",
-]
-
-traj_dir = "/home/olivi/projects/02-Simodels-ZBL/samples/"
-output_dir = "/home/olivi/projects/02-Simodels-ZBL/scripts/output/"
+traj_dir = "/home/olivi/projects/02-Simodels-ZBL/examples/samples/"
+output_dir = "/home/olivi/projects/02-Simodels-ZBL/examples/output/"
 
 summary = []
 

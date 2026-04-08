@@ -1,0 +1,2129 @@
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_1.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.002 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+
+- Type Label Framework: https://doi.org/10.1021/acs.jpcb.3c08419
+
+@Article{Gissinger24,
+ author = {Jacob R. Gissinger, Ilia Nikiforov, Yaser Afshar, Brendon Waters, Moon-ki Choi, Daniel S. Karls, Alexander Stukowski, Wonpil Im, Hendrik Heinz, Axel Kohlmeyer, and Ellad B. Tadmor},
+ title = {Type Label Framework for Bonded Force Fields in LAMMPS},
+ journal = {J. Phys. Chem. B},
+ year =    2024,
+ volume =  128,
+ number =  13,
+ pages =   {3282–-3297}
+}
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.256        0             -935.256       -6662.3583    
+Loop time of 1.31e-06 on 1 procs for 0 steps with 216 atoms
+
+76.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.31e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_2.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.081 | 3.081 | 3.081 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.32246      0             -935.32246     -6679.9631    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+192.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            784 ave         784 max         784 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_3.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.083 | 3.083 | 3.083 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.15383      0             -935.15383     -6629.0032    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            834 ave         834 max         834 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_4.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -904.14143      0             -904.14143      13551.948    
+Loop time of 1.05e-06 on 1 procs for 0 steps with 216 atoms
+
+95.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.05e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            887 ave         887 max         887 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7374 ave        7374 max        7374 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7374
+Ave neighs/atom = 34.138889
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_5.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.083 | 3.083 | 3.083 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.09168      0             -935.09168     -6615.8625    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+192.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            834 ave         834 max         834 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_6.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.091 | 3.091 | 3.091 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.26703      0             -935.26703     -6659.9573    
+Loop time of 1.02e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.02e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            937 ave         937 max         937 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_7.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.31233      0             -935.31233     -6685.7635    
+Loop time of 1.05e-06 on 1 procs for 0 steps with 216 atoms
+
+190.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.05e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            879 ave         879 max         879 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_8.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.39565      0             -935.39565     -6704.9355    
+Loop time of 1.01e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.01e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_9.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.086 | 3.086 | 3.086 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.21436      0             -935.21436     -6678.2719    
+Loop time of 1.02e-06 on 1 procs for 0 steps with 216 atoms
+
+98.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.02e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_10.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.43254      0             -935.43254     -6704.6805    
+Loop time of 1.15e-06 on 1 procs for 0 steps with 216 atoms
+
+87.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.15e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_11.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.088 | 3.088 | 3.088 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.25982      0             -935.25982     -6680.1475    
+Loop time of 1.06e-06 on 1 procs for 0 steps with 216 atoms
+
+94.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.06e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            939 ave         939 max         939 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_12.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.081 | 3.081 | 3.081 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.33194      0             -935.33194     -6697.1975    
+Loop time of 1.05e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.05e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            784 ave         784 max         784 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_13.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.25118      0             -935.25118     -6653.0658    
+Loop time of 1.02e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.02e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            853 ave         853 max         853 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_14.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.088 | 3.088 | 3.088 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.25553      0             -935.25553     -6677.4037    
+Loop time of 1.07e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.07e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_15.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.081 | 3.081 | 3.081 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.2962       0             -935.2962      -6684.8556    
+Loop time of 1.03e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.03e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            784 ave         784 max         784 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_16.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.088 | 3.088 | 3.088 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.10616      0             -935.10616     -6625.255     
+Loop time of 1.05e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.05e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            939 ave         939 max         939 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_17.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.081 | 3.081 | 3.081 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.26216      0             -935.26216     -6669.8287    
+Loop time of 1.02e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.02e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            784 ave         784 max         784 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_18.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.14959      0             -935.14959     -6627.1788    
+Loop time of 1.05e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.05e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            875 ave         875 max         875 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_19.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.082 | 3.082 | 3.082 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -906.54373      0             -906.54373      11184.703    
+Loop time of 1.03e-06 on 1 procs for 0 steps with 216 atoms
+
+194.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.03e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            810 ave         810 max         810 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7372 ave        7372 max        7372 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7372
+Ave neighs/atom = 34.12963
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_20.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.19046      0             -935.19046     -6634.2567    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            887 ave         887 max         887 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_21.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.086 | 3.086 | 3.086 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.24974      0             -935.24974     -6654.8584    
+Loop time of 1.02e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.02e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_22.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.19335      0             -935.19335     -6643.9766    
+Loop time of 1.06e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.06e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_23.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.22048      0             -935.22048     -6665.2243    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+96.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_24.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.083 | 3.083 | 3.083 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.13043      0             -935.13043     -6625.0802    
+Loop time of 1.14e-06 on 1 procs for 0 steps with 216 atoms
+
+87.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.14e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            834 ave         834 max         834 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_25.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.088 | 3.088 | 3.088 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.13213      0             -935.13213     -6633.8834    
+Loop time of 1.03e-06 on 1 procs for 0 steps with 216 atoms
+
+97.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.03e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            939 ave         939 max         939 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_26.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.23383      0             -935.23383     -6659.8092    
+Loop time of 1.06e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.06e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            889 ave         889 max         889 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_27.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.088 | 3.088 | 3.088 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.22531      0             -935.22531     -6663.9113    
+Loop time of 1.03e-06 on 1 procs for 0 steps with 216 atoms
+
+97.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.03e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            834 ave         834 max         834 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_28.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.084 | 3.084 | 3.084 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.28147      0             -935.28147     -6682.4944    
+Loop time of 1.03e-06 on 1 procs for 0 steps with 216 atoms
+
+97.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.03e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            884 ave         884 max         884 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_29.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.092 | 3.092 | 3.092 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.24532      0             -935.24532     -6656.9062    
+Loop time of 1.27e-06 on 1 procs for 0 steps with 216 atoms
+
+78.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.27e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            939 ave         939 max         939 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_30.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.1977       0             -935.1977      -6694.8109    
+Loop time of 1.07e-06 on 1 procs for 0 steps with 216 atoms
+
+93.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.07e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            889 ave         889 max         889 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_31.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.081 | 3.081 | 3.081 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.38072      0             -935.38072     -6715.1742    
+Loop time of 1.13e-06 on 1 procs for 0 steps with 216 atoms
+
+88.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.13e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            784 ave         784 max         784 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+clear
+  using 1 OpenMP thread(s) per MPI task
+log energies.log append
+units metal
+boundary p p p
+atom_style atomic
+read_data Si333_${i}.in
+read_data Si333_32.in
+Reading data file ...
+  orthogonal box = (0 0 0) to (16.331106 16.331106 16.331106)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  216 atoms
+  reading velocities ...
+  216 velocities
+  read_data CPU = 0.001 seconds
+mass 1 28.085
+pair_style sw
+pair_coeff * * Si.sw Si
+Reading sw potential file Si.sw with DATE: 2007-06-11
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.77118
+  ghost atom cutoff = 5.77118
+  binsize = 2.88559, bins = 6 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.09 | 3.09 | 3.09 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -935.17668      0             -935.17668     -6652.3848    
+Loop time of 1.04e-06 on 1 procs for 0 steps with 216 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.04e-06   |            |       |100.00
+
+Nlocal:            216 ave         216 max         216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            889 ave         889 max         889 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         7344 ave        7344 max        7344 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7344
+Ave neighs/atom = 34
+Neighbor list builds = 0
+Dangerous builds = 0
+next i
+jump SELF loop_struct
+Total wall time: 0:00:00

@@ -12,7 +12,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from ase import Atoms
+from ase.io import read, write
 from ase.io.lammpsdata import write_lammps_data
+from ase.calculators.singlepoint import SinglePointCalculator
 
 def edist(atoms, name, category=None, folder_label=None, recalc=False):
     energies = evaluate_energies(atoms, category=category, folder_label=folder_label)
@@ -131,9 +133,13 @@ def prepare_lammps(atoms, category=None, folder_label=None):
 
 
 def evaluate_energies(atoms, category=None, folder_label=None):
-    """Read energies from ASE (ref) or existing LAMMPS logs. Returns None if logs are missing."""
-    if folder_label == "ref":
-        return np.array([at.get_potential_energy() for at in atoms])
+    """Try get_potential_energy() first; fall back to LAMMPS logs. Returns None if neither is available."""
+    try:
+        energies = [at.get_potential_energy() for at in atoms]
+        if energies:
+            return np.array(energies)
+    except Exception:
+        pass
 
     log_files = _lammps_log_files(category, folder_label)
     if not log_files:
@@ -210,6 +216,22 @@ def create_lammps_input(
 
     text = "\n".join(lines)
     (calc_folder / out_name).write_text(text)
+
+
+def add_energy_calculator(traj_file, log_file):
+    # Read trajectory and matching energies from log
+    traj_file = Path(traj_file)
+    atoms_list = read(str(traj_file), index=":")
+    energies = read_lammps_energies(log_file)
+    if len(energies) != len(atoms_list):
+        raise ValueError(f"Expected {len(atoms_list)} energies, got {len(energies)} from {log_file}")
+    for atoms, energy in zip(atoms_list, energies):
+        try:
+            forces = atoms.get_forces()
+        except Exception:
+            forces = None
+        atoms.calc = SinglePointCalculator(atoms, energy=energy, forces=forces)
+    write(str(traj_file), atoms_list)
 
 
 def read_lammps_energies(lammps_output):
